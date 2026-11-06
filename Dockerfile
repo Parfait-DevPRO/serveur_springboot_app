@@ -16,4 +16,4 @@ COPY --from=build /app/target/*.jar app.jar
 USER spring
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["sh", "-c", "java -jar /app/app.jar --server.port=${PORT:-8080} --server.address=0.0.0.0"]
